@@ -1,0 +1,26 @@
+﻿@model PagedList.IPagedList<WebAppYte.Models.DanhGia>
+@using PagedList.Mvc;
+
+
+
+
+            <h3> Đánh giá </h3>
+      
+<hr />
+
+<div class="">
+    @foreach (var item in Model)
+    {
+<i>Người gửi : <b>@item.BenhNhan.tenbn</b> &nbsp; <i class="fas fa-clock"></i>&nbsp;@item.ngay.Value.ToString("dd/MM/yyyy")</i>
+             
+<h5 class="text-primary">  @Html.Raw(item.noidung)</h5>
+                                              
+                                                                                <hr />}
+    <br />
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Comment", new { page }))
+</div>
+
+
+
